@@ -25,18 +25,13 @@
     },
     "plugins": [
       "expo-router",
-      "expo-image"
+      "expo-image",
+      "expo-video"
     ],
     "extra": {
       "router": {},
       "eas": {
         "projectId": "34d52ace-129e-4dc6-a246-6c5bf1f79cec"
-      }
-    },
-    "doctor": {
-      "reactNativeDirectoryCheck": {
-        "exclude": ["expo-av"],
-        "listUnknownPackages": false
       }
     }
   }

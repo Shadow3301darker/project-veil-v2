@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, ViewStyle, StyleProp } from 'react-native';
 import { Image } from 'expo-image';
-import { Video, ResizeMode } from 'expo-av';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import { useThemeStore, PanelId } from '../store/theme/themeStore';
 import { tierCapabilities } from '../store/theme/tokens';
 
@@ -26,6 +26,13 @@ export function PanelSurface({ panelId, children, style }: PanelSurfaceProps) {
   const showGif = caps.gif && panel.media?.type === 'gif';
   const showVideo = caps.video && panel.media?.type === 'video';
 
+  const videoUri = showVideo ? panel.media!.uri : null;
+  const player = useVideoPlayer(videoUri, (p) => {
+    p.loop = true;
+    p.muted = true;
+    if (videoUri) p.play();
+  });
+
   return (
     <View
       style={[
@@ -48,14 +55,12 @@ export function PanelSurface({ panelId, children, style }: PanelSurfaceProps) {
           contentFit="cover"
         />
       )}
-      {showVideo && panel.media && (
-        <Video
-          source={{ uri: panel.media.uri }}
+      {showVideo && videoUri && (
+        <VideoView
+          player={player}
           style={StyleSheet.absoluteFill}
-          resizeMode={ResizeMode.COVER}
-          isLooping
-          isMuted
-          shouldPlay
+          contentFit="cover"
+          nativeControls={false}
         />
       )}
       <View style={styles.content}>{children}</View>
@@ -71,3 +76,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
