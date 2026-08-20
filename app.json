@@ -28,14 +28,6 @@
       "expo-image",
       "expo-video",
       [
-        "expo-build-properties",
-        {
-          "android": {
-            "reactNativeArchitectures": ["arm64-v8a"]
-          }
-        }
-      ],
-      [
         "llama.rn",
         {
           "enableOpenCLAndHexagon": true
