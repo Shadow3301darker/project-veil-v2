@@ -26,7 +26,13 @@
     "plugins": [
       "expo-router",
       "expo-image",
-      "expo-video"
+      "expo-video",
+      [
+        "llama.rn",
+        {
+          "enableOpenCL": true
+        }
+      ]
     ],
     "extra": {
       "router": {},

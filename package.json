@@ -23,6 +23,7 @@
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "~4.26.0",
     "zustand": "^5.0.15",
+    "llama.rn": "^0.13.0-rc.0",
     "@expo-google-fonts/space-mono": "^0.4.1",
     "@expo-google-fonts/inter": "^0.4.2"
   },
